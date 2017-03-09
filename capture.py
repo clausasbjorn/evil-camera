@@ -1,7 +1,7 @@
-import cv2, random, string, time, os, requests
+import cv2, random, string, time, os, requests, math
 
 api = "http://evil-images.azurewebsites.net/image"
-delay = 5 #seconds
+delay = 60 # Capture every X frame
 expand = 50
 imagePath = "./out/"
 cascPath = "./haarcascades/haarcascade_frontalface_default.xml"
@@ -22,16 +22,22 @@ def post(path):
 
 
 #capture from camera at location 1 (try 0 if you only have one cam)
+
 cap = cv2.VideoCapture(0)
+
 #set the width and height, and UNSUCCESSFULLY set the exposure time
 #cap.set(3,1280)
 #cap.set(4,1024)
 #cap.set(15, 0.1)
 
-
+frameCounter = 0
 
 while True:
     ret, img = cap.read()
+    frameCounter = frameCounter + 1
+    if (frameCounter % delay != 0):
+	continue
+
     # find faces
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = faceCascade.detectMultiScale(
@@ -53,9 +59,6 @@ while True:
         post(filename)
 
     cv2.imshow("input", img)
-
-    if len(faces) > 0:
-	time.sleep(delay)
 
     key = cv2.waitKey(10)
     if key == 27:
