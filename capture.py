@@ -1,7 +1,7 @@
 import cv2
 
 #capture from camera at location 1 (try 0 if you only have one cam)
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 #set the width and height, and UNSUCCESSFULLY set the exposure time
 #cap.set(3,1280)
 #cap.set(4,1024)
