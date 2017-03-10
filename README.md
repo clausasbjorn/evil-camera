@@ -13,7 +13,7 @@ the evil api.
 * A v4l2 camera, or more
 
 ## Dependencies
-* [opencv(www.opencv.org)]
+* [opencv](www.opencv.org)
 * numpy
 * scipy
 
@@ -25,7 +25,7 @@ $ sudo apt-get install python-opencv python-numpy python-scipy
 ## Do a test run
 
 Start capture.py, it will start to detect faces and send them into the
-[evil-image(https://github.com/clausasbjorn/evil-images)] cloud service.
+[evil-image](https://github.com/clausasbjorn/evil-images) cloud service.
 
 ## See what is going on
 
